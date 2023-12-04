@@ -18,6 +18,8 @@ resultBundlePath="${cpath}/${bundleid}_${cdate}.xcresult"
 # 解析 xcresult 二进制文件后的数据
 logpath="${cpath}/logs"
 
+xlogpath="${cpath}/xlogs"
+
 xcodebuildTest() {
 	xcodebuild clean
 
@@ -37,10 +39,16 @@ analysisXcresult() {
 	--output-path=${logpath}
 }
 
+analysisXcresult2() {
+	# 从 xcresult 文件获取日志信息
+	./xcparse logs ${resultBundlePath} ${xlogpath}
+}
+
 
 xcodebuildTest
 if [ $? -eq 0 ]; then
 	analysisXcresult
+	analysisXcresult2
 else
 	echo "xcodebuild test 失败"
 fi
