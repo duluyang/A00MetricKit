@@ -21,6 +21,7 @@ logpath="${cpath}/logs"
 xcodebuildTest() {
 	xcodebuild clean
 
+	# xcodebuild 执行 xctest，统计启动数据
 	xcodebuild test \
 	-project A00MetricKit.xcodeproj \
 	-scheme A00MetricKitUITests \
@@ -30,6 +31,7 @@ xcodebuildTest() {
 }
 
 analysisXcresult() {
+	# 从 xcresult 文件获取日志信息
 	ruby ruby/unitTestLog.rb \
 	--xcresult-path=${resultBundlePath} \
 	--output-path=${logpath}
