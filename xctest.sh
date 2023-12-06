@@ -15,9 +15,10 @@ cpath="xcresult/${bundleid}/${cdate}"
 # xcodebuild test 生成的 xcresult 数据
 resultBundlePath="${cpath}/${bundleid}_${cdate}.xcresult"
 
-# 解析 xcresult 二进制文件后的数据
+# 使用 ruby 来解析 xcresult 二进制文件后的数据
 logpath="${cpath}/logs"
 
+# 使用 xcparse 来解析 xcresult 二进制文件后的数据
 xlogpath="${cpath}/xlogs"
 
 xcodebuildTest() {
